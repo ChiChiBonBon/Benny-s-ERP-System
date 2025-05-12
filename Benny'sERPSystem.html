@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bootstrap 5 Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jquery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<script>
+    /*
+    1. 在每一筆上面 顯示 刪除的按鈕
+    2. 按下 刪除  31_內容_移除_empty_remove.html
+    3. 修改 
+    3-1.   點選  每一筆 把資料顯示回 input  (記得是按哪一個)
+    3-2.   多一個修改的按鈕
+    3-3.   (記得是按哪一個)  放回原本的地方 
+            25_內容_value_attr_值_屬性.html
+            39_遍歷_first_last_eq_filter.html 
+    
+    */
+    $(document).ready(function () {
+        $("#tbody1 tr").click(function () {
+            // 抓到資料
+            let dataList = $(this).find("td");
+            let productSn = dataList.eq(0).text();
+            let productName = dataList.eq(1).text();
+            let amount = dataList.eq(2).text();
+            let unit = dataList.eq(3).text();
+            let warehousePosition = dataList.eq(4).text();
+            let safeAmount = dataList.eq(5).text();
+            let inBoundDate = dataList.eq(6).text();
+            let outBoundDate = dataList.eq(7).text();
+            let mark = dataList.eq(8).text();
+
+            // console.log(email);
+            // console.log(info);
+            $('#productSn').val(productSn);
+            $('#productName').val(productName);
+            $('#amount').val(amount);
+            $('#unit').val(unit);
+            $('#warehousePosition').val(warehousePosition);
+            $('#safeAmount').val(safeAmount);
+            $('#inBoundDate').val(inBoundDate);
+            $('#outBoundDate').val(outBoundDate);
+            $('#mark').val(mark);
+        });
+
+        $("#button1").click(function () {
+            // 添加資料
+            let productSn = $('#productSn').val();
+            let productName = $('#productName').val();
+            let amount = $('#amount').val();
+            let unit =  $('#unit').val();
+            let warehousePosition = $('#warehousePosition').val();
+            let safeAmount = $('#safeAmount').val();
+            let inBoundDate = $('#inBoundDate').val();
+            let outBoundDate = $('#outBoundDate').val();
+            let mark = $('#mark').val();
+
+            let addData = `<tr> 
+                    <td>`+ productSn + `</td>
+                    <td>`+ productName + `</td>
+                    <td>`+ amount + `</td>
+                    <td>`+ unit + `</td>
+                    <td>`+ warehousePosition + `</td>
+                    <td>`+ safeAmount + `</td>
+                    <td>`+ inBoundDate + `</td>
+                    <td>`+ outBoundDate + `</td>
+                    <td>`+ mark + `</td>
+                    <td>
+                      <button type="button" class="btn btn-danger del">刪除</button>
+                        </td>
+                  </tr>`;
+
+            $("#tbody1").append(addData);
+        });
+
+        $("#button2").click(function () {
+            // 清空上面  
+            $('#productSn').val('');
+            $('#productName').val('');
+            $('#amount').val('');
+            $('#unit').val('');
+            $('#warehousePosition').val('');
+            $('#safeAmount').val('');
+            $('#inBoundDate').val('');
+            $('#outBoundDate').val('');
+            $('#mark').val('');
+        });
+
+        //   1. 在每一筆上面 顯示 刪除的按鈕
+        $('.del').click(function del() {
+            $(this).parents("tr").remove();
+        });
+
+        $('#tbody1').on('click', '.del', function () {
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="mt-4 p-5 bg-secondary text-white rounded">
+            <h1>邦尼 ERP 系統</h1>
+            <p>邦尼 ERP 系統專為中小型企業設計，整合財務、庫存、採購、銷售、人資等核心模組，協助企業實現數位轉型，提升營運效率與決策品質。</p>
+            <p>
+                🔑 核心特色
+                模組化架構：​依企業需求靈活選擇模組，無需一次性導入全部功能。
+
+                雲端部署：​支援雲端與本地部署，滿足不同企業的 IT 策略。
+
+                即時報表分析：​提供多維度報表，協助管理層快速掌握營運狀況。
+
+                高擴展性：​隨著企業成長，系統可輕鬆擴充功能與使用者數量。
+
+                在地化支援：​提供繁體中文介面與本地技術支援，確保導入與使用無障礙。
+            </p>
+            <p>
+                🚀 為什麼選擇邦尼 ERP？
+                快速導入，降低成本：​模組化設計與雲端部署，縮短導入時間，降低初期投資。
+
+                提升營運效率：​自動化流程減少人為錯誤，提升作業效率與準確性。
+
+                支援決策制定：​即時數據與報表分析，協助管理層做出明智決策。
+
+                強化競爭力：​整合各部門資訊，提升整體營運效能，增強市場競爭力。
+            </p>
+            <p>
+                📈 適用產業
+                製造業
+
+                批發零售業
+
+                服務業
+
+                電子商務
+
+                餐飲與連鎖業
+            </p>
+            <p>
+                📞 立即聯繫我們，開啟數位轉型之旅
+                無論您是新創企業還是正在尋求升級的中小企業，邦尼 ERP 系統都是您值得信賴的夥伴。​立即聯繫我們，了解更多解決方案，攜手邁向智慧營運的新時代。
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="mb-3 mt-3 col-4">
+                <label for="productSn" class="form-label">商品編號:</label>
+                <input type="text" class="form-control" id="productSn" placeholder="">
+            </div>
+            <div class="mb-3 mt-3 col-4">
+                <label for="productName" class="form-label">商品名稱:</label>
+                <input type="text" class="form-control" id="productName" placeholder="">
+            </div>
+            <div class="mb-3 mt-3 col-4">
+                <label for="amount" class="form-label">庫存數量:</label>
+                <input type="text" class="form-control" id="amount" placeholder="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 mt-3 col-4">
+                <label for="unit" class="form-label">單位:</label>
+                <input type="text" class="form-control" id="unit" placeholder="">
+            </div>
+            <div class="mb-3 mt-3 col-4">
+                <label for="warehousePosition" class="form-label">倉庫位置:</label>
+                <input type="text" class="form-control" id="warehousePosition" placeholder="">
+            </div>
+            <div class="mb-3 mt-3 col-4">
+                <label for="safeAmount" class="form-label">安全庫存量:</label>
+                <input type="text" class="form-control" id="safeAmount" placeholder="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 mt-3 col-4">
+                <label for="inBoundDate" class="form-label">最近入庫日:</label>
+                <input type="text" class="form-control" id="inBoundDate" placeholder="">
+            </div>
+            <div class="mb-3 mt-3 col-4">
+                <label for="outBoundDate" class="form-label">最近出庫日:</label>
+                <input type="text" class="form-control" id="outBoundDate" placeholder="">
+            </div>
+            <div class="mb-3 mt-3 col-4">
+                <label for="mark" class="form-label">備註</label>
+                <textarea class="form-control" id="mark" rows="3"></textarea>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" id="button1"> 添加資料</button>
+        <button type="button" class="btn btn-secondary" id="button2"> 清空上面</button>
+        <p>
+            <hr>
+        <p>
+
+        <table class="table  table-striped  table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">商品編號</th>
+                    <th scope="col">商品名稱</th>
+                    <th scope="col">庫存數量</th>
+                    <th scope="col">單位</th>
+                    <th scope="col">倉庫位置</th>
+                    <th scope="col">安全庫存量</th>
+                    <th scope="col">最近入庫日</th>
+                    <th scope="col">最近出庫日</th>
+                    <th scope="col">備註</th>
+                    <th scope="col">按鈕操作</th>
+                </tr>
+            </thead>
+            <tbody id="tbody1">
+                <tr>
+                    <td>sh0001</td>
+                    <td>二手衣服</td>
+                    <td>1</td>
+                    <td>件</td>
+                    <td>桃園物流中心</td>
+                    <td>10</td>
+                    <td>2025-05-01</td>
+                    <td>2025-05-07</td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-danger del">刪除</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>sh0002</td>
+                    <td>二手衣櫃</td>
+                    <td>2</td>
+                    <td>個</td>
+                    <td>中壢物流中心</td>
+                    <td>5</td>
+                    <td>2025-04-13</td>
+                    <td>2025-05-04</td>
+                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-danger del">刪除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
