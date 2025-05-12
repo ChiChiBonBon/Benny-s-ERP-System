@@ -1,5 +1,9 @@
 ```markdown
+<<<<<<< Updated upstream
 # 邦尼 ERP 系統網頁版/Benny-s-ERP-System Web Version
+=======
+# 邦尼 ERP 系統網頁版/Benny-s-ERP-System Web Edition
+>>>>>>> Stashed changes
 
 
 邦尼 ERP 系統是一款為中小企業打造的簡易網頁版 ERP 系統，使用 **HTML5 + Bootstrap 5 + jQuery** 建構，用於管理商品庫存資料，提供基本的資料新增、修改、刪除功能。
